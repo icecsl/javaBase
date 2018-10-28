@@ -1,8 +1,11 @@
 package com.hbj.java8.date;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 /**
  * Created by huangbingjing on 18/5/15.
@@ -26,5 +29,17 @@ public class FormatTest {
 		LocalDateTime time = LocalDateTime.now();
 		String timeStr = time.format(formatter1);
 		System.out.println("timeStr:" + timeStr);
+
+		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+		String a = format.format(new Date());
+		Date b = null;
+		try {
+			b = format.parse("20181111");
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+
+		System.out.println(a);
+		System.out.println(b.getYear()+b.getMonth()+ b.getDate());
 	}
 }

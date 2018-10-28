@@ -5,5 +5,6 @@ package com.hbj.proxy;
  * @author: huangbingjing
  * @date: 18/10/23
  */
-public interface MyInterface {
+public interface MyInterface extends SuperInterface{
+	void foo();
 }

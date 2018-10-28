@@ -6,4 +6,6 @@ package com.hbj.proxy;
  * @date: 18/10/23
  */
 public interface SuperInterface {
+
+	void superFoo();
 }

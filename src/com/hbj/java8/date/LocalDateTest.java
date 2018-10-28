@@ -25,5 +25,9 @@ public class LocalDateTest {
 		//一周后日期
 		LocalDate aftWeek = today.plus(1, ChronoUnit.WEEKS);
 		System.out.println("aftWeek = " + aftWeek);
+
+		LocalDate preDay = today.minusDays(1);
+		System.out.println("preDay = " + preDay);
+
 	}
 }

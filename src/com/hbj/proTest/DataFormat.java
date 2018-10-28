@@ -1,13 +1,11 @@
-package mkt.biz.util;
+package com.hbj.proTest;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
@@ -16,53 +14,11 @@ import java.util.Date;
  */
 public class DataFormat {
 
-    private static final Logger logger = LoggerFactory.getLogger(DataFormat.class);
 
 
     private static final String DATE_PATTERN = "yyyy-MM-dd";
 
     private static final String TIME_PATTERN = "yyyy-MM-dd HH:mm:ss";
-
-    /**
-     * 由yyyy-MM-dd格式的字符串返回日期
-     *
-     * @param string
-     * @return
-     */
-    public static Date stringToDate(String string) throws Exception {
-        if (string == null)
-            return null;
-
-        if (string.trim().length() == 0)
-            return null;
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(
-                DataFormat.DATE_PATTERN);
-        try {
-            return simpleDateFormat.parse(string);
-        } catch (ParseException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    /**
-     * 由yyyy-MM-dd HH:mm:ss格式的字符串返回日期时间
-     *
-     * @param string 时间
-     * @return
-     */
-    public static Date stringToTime(String string) throws Exception {
-        if (string == null)
-            return null;
-
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(
-                DataFormat.TIME_PATTERN);
-        try {
-            return simpleDateFormat.parse(string);
-        } catch (ParseException e) {
-            return stringToDate(string);
-        }
-    }
 
 
     /* ==================  新增 ====================== */
@@ -87,8 +43,48 @@ public class DataFormat {
         try {
             return LocalTime.of(Integer.valueOf(item[0]),Integer.valueOf(item[1]),Integer.valueOf(item[2]));
         }catch (Exception e){
-            logger.info("[DataFormat.strToLocalTime][时间转化失败]");
             return null;
         }
     }
+
+    public static LocalDate parseBirthday(String birthday) {
+        if (birthday == null || birthday.length() != 4){
+            return null;
+        }
+
+        try {
+            int year = LocalDate.now().getYear();
+            int month = Integer.valueOf(birthday.substring(0,2));
+            int day = Integer.valueOf(birthday.substring(2,4));
+            return LocalDate.of(year, month, day);
+        }catch (Exception e){
+            System.out.println("[parseBirthday][NumberFormatException][生日格式有误]");
+            return null;
+        }
+
+    }
+
+	public static Date LDtoDate(LocalDate localDate) {
+		return Date.from(localDate.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
+	}
+
+	public static Date getDayEnd(LocalDate localDate) {
+		LocalDateTime today_end = LocalDateTime.of(localDate, LocalTime.MAX);
+		return Date.from(today_end.atZone(ZoneId.systemDefault()).toInstant());
+	}
+
+
+	//string 转 LocalDateTime  "2017-01-01 19:00:00"
+	public static LocalDateTime strToLDT(String localDateTime){
+		DateTimeFormatter df = DateTimeFormatter.ofPattern(DataFormat.TIME_PATTERN);
+		return LocalDateTime.parse(localDateTime, df);
+	}
+
+	public static String dateToStr(Date d){
+		if (d == null){
+			return null;
+		}
+		SimpleDateFormat sdf = new SimpleDateFormat(TIME_PATTERN);
+		return sdf.format(d);
+	}
 }

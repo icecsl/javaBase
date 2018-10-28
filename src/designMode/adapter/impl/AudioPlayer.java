@@ -5,5 +5,5 @@ package designMode.adapter.impl;
  * @author: huangbingjing
  * @date: 18/8/10
  */
-public class AudioPlayer {
+public class AudioPlayer{
 }

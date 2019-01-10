@@ -5,5 +5,9 @@ package thinkingInJava;
  */
 public class ThinkTest {
 
+	public static void main(String[] args) {
+
+	}
+
 }
 

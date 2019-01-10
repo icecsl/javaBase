@@ -14,7 +14,8 @@ public class FormatTest {
 	public static void main(String[] args) {
 
 
-		/* ==================== 字符串转日期 ================ */
+		// ==================== 字符串转日期 ================
+
 		//BASIC_ISO_DATE:20180101 ISO_DATE:2018-01-01
 		LocalDate date = LocalDate.parse("20160101", DateTimeFormatter.BASIC_ISO_DATE);
 		System.out.println("date:" + date);
@@ -24,7 +25,8 @@ public class FormatTest {
 		LocalDate myday = LocalDate.parse("03 23 2017", formatter);
 		System.out.println("myday:" + myday);
 
-		/* ==================== 日期转字符串 ================ */
+		 //==================== 日期转字符串 ================
+
 		DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("MM dd yyyy HH:mm");
 		LocalDateTime time = LocalDateTime.now();
 		String timeStr = time.format(formatter1);
@@ -33,13 +35,24 @@ public class FormatTest {
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 		String a = format.format(new Date());
 		Date b = null;
+
 		try {
 			b = format.parse("20181111");
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
 
+
 		System.out.println(a);
 		System.out.println(b.getYear()+b.getMonth()+ b.getDate());
+
+
+		//毫秒格式	--- yyMMddHHmmssSSS
+		String timOfNano = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyMMddHHmmssnnnnnnnnn"));
+		String timOfMs1 = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyMMddHHmmssSSS"));
+		String timeOfMs = timOfNano.substring(0,15);
+		System.out.println("timeOfMs:"+timeOfMs);
+		System.out.println("timOfMs1:"+timOfMs1);
+
 	}
 }

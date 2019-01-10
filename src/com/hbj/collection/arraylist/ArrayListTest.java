@@ -1,14 +1,30 @@
 package com.hbj.collection.arraylist;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
  * Created by huangbingjing on 18/1/25.
  */
 public class ArrayListTest {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
+
+		normalTest();
+
+//		arrayListCollectionTest();
+
+//		threadTest();
+
+
+
+
+
+	}
+
+	public static void normalTest(){
 		List<String> list = new ArrayList<>(0);
+//		List<String> list = new ArrayList<>();
 		list.add("a");
 		list.add("c");
 		list.add("d");
@@ -52,6 +68,45 @@ public class ArrayListTest {
 
 		System.out.println("list1 == list2：" + list1.equals(list2));
 		System.out.println("list1 == list3：" + list1.equals(list3));
+
+	}
+
+
+
+
+
+	public static void arrayListCollectionTest(){
+		Collection a = new ArrayList();
+		((ArrayList) a).add(1);
+		((ArrayList) a).add("v");
+
+		List<String> list = new ArrayList<>(a);
+
+		System.out.println(list);
+
+
+	}
+
+	public static void threadTest() throws InterruptedException {
+
+		List<Integer> list = new ArrayList<>();
+		for (int i = 0; i < 100; i++) {
+			new Thread(new Runnable() {
+				@Override
+				public void run() {
+					for (int j = 0; j < 100; j++) {
+						list.add(1);// 多执行几次会出现ArrayIndexOutOfBoundsException异常
+					}
+				}
+			}).start();
+		}
+		Thread.sleep(100);// 等待子线程完全执行完毕
+		for (int i = 0; i < list.size(); i++) {
+			if (list.get(i) == null) {
+				System.out.println("i:" + i + ",数据：" + list.get(i));
+			}
+		}
+		System.out.println("list.size():" + list.size());
 
 	}
 }

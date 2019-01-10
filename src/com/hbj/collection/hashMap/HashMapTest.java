@@ -8,7 +8,7 @@ import java.util.Map;
  */
 public class HashMapTest {
 	public static void main(String[] args) {
-		Map<String, String> hashMap = new HashMap<>();
+		Map<String, String> hashMap = new HashMap<>(7);
 		hashMap.put("a","aa");
 		hashMap.put("b","bb");
 		hashMap.put("Aa","Aa");
@@ -16,5 +16,7 @@ public class HashMapTest {
 		hashMap.put("BB","CC");
 
 		System.out.println(hashMap.get("a"));
+
+		System.out.println(hashMap);
 	}
 }

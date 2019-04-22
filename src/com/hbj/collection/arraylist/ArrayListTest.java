@@ -1,6 +1,7 @@
 package com.hbj.collection.arraylist;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
@@ -10,11 +11,13 @@ import java.util.List;
 public class ArrayListTest {
 	public static void main(String[] args) throws InterruptedException {
 
-		normalTest();
+//		normalTest();
 
 //		arrayListCollectionTest();
 
 //		threadTest();
+
+		castTest();
 
 
 
@@ -109,4 +112,56 @@ public class ArrayListTest {
 		System.out.println("list.size():" + list.size());
 
 	}
+
+	//	list子类父类
+	public static void castTest() throws InterruptedException {
+
+		List<? extends B> listA = new ArrayList<C>(Arrays.asList(new C()));
+//		listA.add(new A());
+//		listA.add(new B());
+//		listA.add(new C());
+		B b = (B)listA.get(0);
+		C bcc = (C)listA.get(0);
+		System.out.println(b);
+		System.out.println(bcc);
+
+		List<? super B> listBB = new ArrayList<>();
+//		listBB.add(new A());
+		listBB.add(new B());
+		listBB.add(new C());
+		A ab = (A)listBB.get(0);
+		B bb = (B)listBB.get(0);
+		C cb = (C)listBB.get(0);//因为B不是C类型当然失败了
+		B bc = (B)listBB.get(1);
+		C cc = (C)listBB.get(1);
+		System.out.println(ab);
+		System.out.println(bb);
+		System.out.println(bc);
+		System.out.println(cc);
+
+		List<B> listB = new ArrayList<B>();
+
+
+//		extendTest(new ArrayList<A>());
+//		extendTest(new ArrayList<B>());
+//		extendTest(new ArrayList<C>());
+//
+//		superTest(new ArrayList<A>());
+//		superTest(new ArrayList<B>());
+//		superTest(new ArrayList<C>());
+
+	}
+
+	public static void extendTest(List<? extends B> a) throws InterruptedException {
+
+	}
+	public static void superTest(List<? super B> a) throws InterruptedException {
+
+	}
+
 }
+
+class A{}
+class B extends A{}
+class C extends B{}
+class D extends B{}

@@ -1,5 +1,5 @@
 package thinkingInJava.concurrency;//: concurrency/Joining.java
-// Understanding join().
+// Understanding add().
 class Sleeper extends Thread {
   private int duration;
   public Sleeper(String name, int sleepTime) {
@@ -32,7 +32,7 @@ class Joiner extends Thread {
     } catch(InterruptedException e) {
       System.out.println("Interrupted");
     }
-    System.out.println(getName() + " join completed");
+    System.out.println(getName() + " add completed");
   }
 }
 
@@ -48,7 +48,7 @@ public class Joining {
   }
 } /* Output:
 Grumpy was interrupted. isInterrupted(): false
-Doc join completed
+Doc add completed
 Sleepy has awakened
-Dopey join completed
+Dopey add completed
 *///:~

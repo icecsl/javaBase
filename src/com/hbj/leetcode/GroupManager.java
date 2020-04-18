@@ -40,7 +40,7 @@
 //    public void createGroup(int index){
 //        GroupInfo currentGroup = GroupInfo.init();
 //        int groupId = currentGroup.getGroupId();
-//        currentGroup.join(index);
+//        currentGroup.add(index);
 //        this.groupInfos.put(groupId, currentGroup);
 //        memberInfos[index] = groupId;
 //    }
@@ -56,7 +56,7 @@
 //
 //    public void joinGroup(int index, GroupInfo group){
 //        int oriId = group.getGroupId();
-//        group.join(index);
+//        group.add(index);
 //        memberInfos[index] = oriId;
 //    }
 //

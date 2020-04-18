@@ -8,24 +8,29 @@ public class Solution {
 
     public static void main(String[] args) {
 
-        //        int[][] ori = {
-//                {1,1,0,0,1,1,0,0,0},
-//                {1,1,0,0,1,0,1,0,1},
-//                {0,0,1,0,0,0,1,0,1},
-//                {1,0,0,0,0,0,0,1,0},
-//                {1,0,1,0,1,1,0,1,0},
-//                {0,0,0,1,0,0,1,0,1},
-//                {0,0,0,1,0,1,0,1,0},
-//                {1,0,0,1,0,1,0,0,1},
-//                {0,1,0,0,0,0,0,1,0}};
+                int[][] ori = {
+                {1,1,0,0,1,1,1,0,0},
+                {1,1,0,0,1,0,1,0,1},
+                {0,0,1,0,0,0,1,0,1},
+                {1,0,0,0,0,0,0,1,0},
+                {1,0,1,0,1,1,0,1,0},
+                {0,0,0,1,0,0,1,0,1},
+                {0,0,0,1,0,1,0,1,0},
+                {1,0,0,1,0,1,0,0,1},
+                {0,1,0,0,0,0,0,1,0}};
 
-        int[][] grid = {{1}};
+//        int[][] grid = {{1}};
+          int[][] grid = {
+                  {1,1,0,0,1},
+                  {1,1,0,0,1},
+                  {0,0,1,0,0},
+                  {1,0,0,1,1},
+                  {1,0,0,1,1}};
 
         int n = grid[0].length;
         GroupManager manager = GroupManager.init(n);
         int max = 0;
         for (int i=0; i<grid.length; i++){
-
             for (int j=0; j<n; j++) {
                 int item = grid[i][j]; // 当前数
                 int leftMember = manager.getMemberInfo(j-1);  // 左边成员信息
@@ -34,8 +39,7 @@ public class Solution {
                 if (item == 0){
                     // 去掉参团位置数，不能去掉员工数
                     if (aboveMember != -1) {
-                        int deleteMemberNums = manager.deleteIndex(j, aboveMember);
-                        max = deleteMemberNums > max?deleteMemberNums:max;
+                        manager.deleteIndex(j);
                     }
                 }else {
                     // 参团，加入位子且增加员工数
@@ -72,7 +76,7 @@ public class Solution {
             }
         }
 
-        for (GroupInfo leftInfo :manager.getGroupInfos()){
+        for (GroupInfo leftInfo :manager.getGroupInfos().values()){
             if (leftInfo !=null){
                 int memberNums = leftInfo.getMemberNums();
                 max = memberNums > max?memberNums:max;

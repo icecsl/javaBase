@@ -17,65 +17,34 @@ public class GroupInfo {
     private Integer memberNums;
 
     /**
-     * 参团位置个数, 当个数为0时候，要清零
+     * 参团位置, 当个数为0时候，要清零
      */
-    private Integer memberIndexNums;
-
-
     private Set<Integer> memberIndexs;
 
     private int groupId;
 
-
-    public static GroupInfo init(int index){
+    public static GroupInfo init(){
         GroupInfo p = new GroupInfo();
-        p.setMemberNums(1);
+        p.setMemberNums(0);
         p.memberIndexs = new TreeSet<>();
-        p.memberIndexs.add(index);
-        p.setGroupId(index);
+        p.setGroupId(IdGenerator.getId());
         return p;
     }
 
-
-    public boolean join(int index){
+    public void join(int index){
         memberIndexs.add(index);
         this.setMemberNums(memberNums+1);
-        int min = index < groupId?index:groupId;
-        if (min != groupId) {
-            this.setGroupId(min);
-            return true;
-        }
-        return false;
     }
 
-    public boolean deleteIndex(int index){
+    public void away(int index){
         memberIndexs.remove(index);
-        if (index == groupId) {
-            List <Integer> lst = new ArrayList<>(memberIndexs);
-            if(lst!=null && !lst.isEmpty()) {
-                this.setGroupId(lst.get(0));
-            }
-            return true;
-        }
-        return false;
     }
 
-    public boolean merge(GroupInfo groupInfo){
+    public void merge(GroupInfo groupInfo){
         this.setMemberNums(memberNums+groupInfo.getMemberNums());
         memberIndexs.addAll(groupInfo.getMemberIndexs());
-
-        List <Integer> lst = new ArrayList<>(memberIndexs);
-        int newId =lst.get(0);
-        if (newId!=groupId){
-            this.setGroupId(newId);
-            return true;
-        }
-        return false;
     }
 
-    private void disjustId(){
-
-    }
 
     public Integer getMemberNums() {
         return memberNums;
@@ -83,14 +52,6 @@ public class GroupInfo {
 
     public void setMemberNums(Integer memberNums) {
         this.memberNums = memberNums;
-    }
-
-    public Integer getMemberIndexNums() {
-        return memberIndexNums;
-    }
-
-    public void setMemberIndexNums(Integer memberIndexNums) {
-        this.memberIndexNums = memberIndexNums;
     }
 
     public Set<Integer> getMemberIndexs() {

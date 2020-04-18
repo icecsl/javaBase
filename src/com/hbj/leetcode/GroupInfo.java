@@ -1,9 +1,6 @@
 package com.hbj.leetcode;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 /**
  * @Author: huangbingjing
@@ -16,33 +13,17 @@ public class GroupInfo {
      */
     private Integer memberNums;
 
-    /**
-     * 参团位置, 当个数为0时候，要清零
-     */
-    private Set<Integer> memberIndexs;
-
-    private int groupId;
-
-    public static GroupInfo init(){
-        GroupInfo p = new GroupInfo();
-        p.setMemberNums(0);
-        p.memberIndexs = new TreeSet<>();
-        p.setGroupId(IdGenerator.getId());
-        return p;
+    public GroupInfo(Integer memberNums) {
+        this.memberNums = memberNums;
     }
 
     public void join(int index){
-        memberIndexs.add(index);
         this.setMemberNums(memberNums+1);
     }
 
-    public void away(int index){
-        memberIndexs.remove(index);
-    }
 
     public void merge(GroupInfo groupInfo){
         this.setMemberNums(memberNums+groupInfo.getMemberNums());
-        memberIndexs.addAll(groupInfo.getMemberIndexs());
     }
 
 
@@ -54,19 +35,17 @@ public class GroupInfo {
         this.memberNums = memberNums;
     }
 
-    public Set<Integer> getMemberIndexs() {
-        return memberIndexs;
+    public static void main(String[] args) {
+
+        Map<Integer, Integer> map = new HashMap<>();
+        map.put(1, new Integer(1));
+        map.put(2, new Integer(1));
+
+        System.out.println( map.get(1) == map.get(2));
+
+        map.put(2, map.get(1));
+
+        System.out.println( map.get(1) == map.get(2));
     }
 
-    public void setMemberIndexs(Set<Integer> memberIndexs) {
-        this.memberIndexs = memberIndexs;
-    }
-
-    public int getGroupId() {
-        return groupId;
-    }
-
-    public void setGroupId(int groupId) {
-        this.groupId = groupId;
-    }
 }

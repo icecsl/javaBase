@@ -72,13 +72,11 @@ public class Solution {
                             if (leftGroup != aboveGroup){
                                 leftGroup.add(aboveGroup.getMemberNums());
                                 for (int k=0; k<n; k++) {
-                                    int itemK_1 = grid[i-1][k];
-                                    int itemK = grid[i][k];
-                                    if (itemK_1 == aboveMember) {
-                                        grid[i-1][k] = leftMember;
-                                    }
-                                    if (itemK == aboveMember) {
+                                    if (k<j && grid[i][k] == aboveMember){
                                         grid[i][k] = leftMember;
+                                    }
+                                    if (k>j && grid[i-1][k] == aboveMember){
+                                        grid[i-1][k] = leftMember;
                                     }
                                 }
                             }

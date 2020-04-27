@@ -18,16 +18,27 @@ public class NQueensSolution {
         List<QueenResult> queenResults = new ArrayList<>();
         QueenResult queenResult = QueenResult.init(n);
         begin(0,0, queenResult, n, queenResults);
+        for (QueenResult result1 :queenResults){
+            List<String> ss = new ArrayList<>();
+            String[][] array = result1.getArray();
+            for (int i=0; i<n; i++) {
+                StringBuilder s = new StringBuilder();
+                for (int j = 0; j < n; j++) {
+                    s.append(array[i][j]);
+                }
+                ss.add(s.toString());
+            }
+            result.add(ss);
+        }
 
-        System.out.println(queenResults);
-        return null;
+        return result;
     }
 
 
 
     public static void begin(int row, int col, QueenResult queenResult, int n, List<QueenResult> queenResults){
 
-        Integer[][] array = queenResult.getArray();
+        String[][] array = queenResult.getArray();
         List<Queen> queens = queenResult.getQueens();
 
         head:
@@ -35,22 +46,22 @@ public class NQueensSolution {
 
             lable:
             for (int j = 0; j < n; j++) {
-                Integer item = array[i][j];
+                String item = array[i][j];
                 if (item != null) {
                     continue;
                 }
 
                 for (Queen queen: queens) {
                     if (i == queen.getI()) {
-                        array[i][j] = 0;
+                        array[i][j] = ".";
                         continue lable;
                     }
                     if (j == queen.getJ()) {
-                        array[i][j] = 0;
+                        array[i][j] = ".";
                         continue lable;
                     }
                     if (Math.abs(i-queen.getI()) == Math.abs(j-queen.getJ())){
-                        array[i][j] = 0;
+                        array[i][j] = ".";
                         continue lable;
                     }
                 }
@@ -69,40 +80,19 @@ public class NQueensSolution {
     public static void makeQueen(int row, int col, QueenResult queenResult, int n, List<QueenResult> queenResults){
         Queen queen = new Queen(row, col);
         queenResult.getQueens().add(queen);
-        Integer[][] array = queenResult.getArray();
-        array[row][col] = 1;
+        String[][] array = queenResult.getArray();
+        array[row][col] = "Q";
         begin(row, col, queenResult, n, queenResults);
     }
-
-//    private void makeQueen(int row, int col, List<Queen> queens, Integer[][] array, int n){
-//        Queen queen = new Queen(row, col);
-//        queens.add(queen);
-//        array[row][col] = 1;
-//        begin(row, col, array, n, queens);
-//    }
 
     public static void makeNoQueen(int row, int col, QueenResult queenResult, int n, List<QueenResult> queenResults){
-        Integer[][] array = queenResult.getArray();
-        array[row][col] = 0;
+        String[][] array = queenResult.getArray();
+        array[row][col] = ".";
         begin(row, col, queenResult, n, queenResults);
     }
 
-
-
     public static void main(String[] args) {
-
-        solveNQueens(5);
-
-//        Integer[][] array = new Integer[9][9];
-//        array[0][0] = 1;
-//
-//        Integer[][] array2 = new Integer[9][9];
-//        for (int i=0;i<9;i++){
-//            array2[i] = Arrays.copyOf(array[i], array[i].length);
-//        }
-//        array[0][1] = 1;
-//        System.out.println(array);
-//        System.out.println(array2);
+        solveNQueens(4);
     }
 
 

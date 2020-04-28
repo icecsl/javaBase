@@ -14,14 +14,14 @@ public class QueenResult {
 
     private String[][] array;
 
-    private int nums;
+    private List<String> result;
 
 
     public static QueenResult init(int n){
         QueenResult po = new QueenResult();
         po.setArray(new String[n][n]);
         po.setQueens(new ArrayList<>());
-        po.setNums(0);
+        po.setResult(new ArrayList<>());
         return po;
     }
 
@@ -29,7 +29,7 @@ public class QueenResult {
     public QueenResult() {
     }
 
-    public QueenResult(List<Queen> queensI, String[][] array, int n) {
+    public QueenResult(List<Queen> queensI, String[][] array, List<String> result, int n) {
 
         this.queens = new ArrayList<>();
         queens.addAll(queensI);
@@ -37,7 +37,8 @@ public class QueenResult {
         for (int i=0;i<n;i++){
             this.array[i] = Arrays.copyOf(array[i], array[i].length);
         }
-        this.nums = nums;
+        this.result = new ArrayList<>();
+        this.result.addAll(result);
     }
 
     public List<Queen> getQueens() {
@@ -56,11 +57,11 @@ public class QueenResult {
         this.array = array;
     }
 
-    public int getNums() {
-        return nums;
+    public List<String> getResult() {
+        return result;
     }
 
-    public void setNums(int nums) {
-        this.nums = nums;
+    public void setResult(List<String> result) {
+        this.result = result;
     }
 }

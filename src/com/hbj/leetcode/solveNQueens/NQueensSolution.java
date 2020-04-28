@@ -43,11 +43,15 @@ public class NQueensSolution {
 
         head:
         for (int i=row; i<n; i++) {
+            int queensize = 0;
 
             lable:
             for (int j = 0; j < n; j++) {
                 String item = array[i][j];
                 if (item != null) {
+                    if ("Q".equals(item)){
+                        queensize = 1;
+                    }
                     continue;
                 }
 
@@ -70,6 +74,10 @@ public class NQueensSolution {
                 makeNoQueen(i, j, noQueenResult,n, queenResults);
                 return;
 //                break head;
+            }
+
+            if (queensize != 1) {
+                return;
             }
         }
         if (queens.size() == n) {

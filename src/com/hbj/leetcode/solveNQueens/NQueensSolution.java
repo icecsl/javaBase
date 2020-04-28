@@ -24,11 +24,16 @@ public class NQueensSolution {
 
         for (int i=row; i<n; i++) {
             StringBuilder s = new StringBuilder();
+            int queensize = 0;
+
             lable:
             for (int j = 0; j < n; j++) {
 
                 String item = array[i][j];
                 if (item != null) {
+                    if ("Q".equals(item)){
+                        queensize = 1;
+                    }
                     s.append(item);
                     continue;
                 }
@@ -60,6 +65,10 @@ public class NQueensSolution {
 
                 makeQueen(i, j, array, queens, stringResult, n, queenResults);
                 makeNoQueen(i, j, newArray, newQueens, newStrResult, n, queenResults);
+                return;
+            }
+
+            if (queensize != 1) {
                 return;
             }
             stringResult.add(s.toString());

@@ -83,6 +83,10 @@ public class NQueensSolution {
         Queen queen = new Queen(row, col);
         queens.add(queen);
         array[row][col] = "Q";
+        makeNoQueen(row, col+1, array, n);
+        makeNoQueen(row+1, col, array, n);
+        makeNoQueen(row+1, col-1, array, n);
+        makeNoQueen(row+1, col+1, array, n);
         begin(row, col, array,queens, stringResult , n, queenResults);
     }
 
@@ -90,10 +94,16 @@ public class NQueensSolution {
         array[row][col] = ".";
         begin(row, col, array,queens, stringResult , n, queenResults);
     }
+    public static void makeNoQueen(int row, int col, String[][] array, int n){
+        if (row<0 || row>=n || col<0 || col>=n){
+            return;
+        }
+        array[row][col] = ".";
+    }
 
     public static void main(String[] args) {
         long begin = System.currentTimeMillis();
-        solveNQueens(8);
+        solveNQueens(4);
         long end = System.currentTimeMillis();
         System.out.println(end - begin);
     }

@@ -21,8 +21,6 @@ public class NQueensSolution {
     public static void begin(int row, int col, int n, List<Queen> queens,  List<List<String>> queenResult) {
         begin:
         for (int i=row; i<n; i++) {
-
-            Queen queenI = new Queen(i);
             lable:
             for (int j = 0; j < n; j++) {
 
@@ -42,16 +40,15 @@ public class NQueensSolution {
                 }
                 List<Queen> newQueens = new ArrayList<>();
                 newQueens.addAll(queens);
-
-                queenI.setJ(j);
+                Queen queenI = new Queen(i,j);
                 queens.add(queenI);
                 begin(i+1,0, n, queens, queenResult);
-                begin(i,j+1, n, newQueens, queenResult);
+                if (j!=n){
+                    begin(i,j+1, n, newQueens, queenResult);
+                }
                 return;
             }
-            if (queenI.getJ() == null){
-                return;
-            }
+            return;
         }
 
         List<String> s = new ArrayList<>();

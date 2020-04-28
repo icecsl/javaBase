@@ -5,31 +5,31 @@ package com.hbj.leetcode.solveNQueens.perfect;
  * @DATE: 2020-04-27
  */
 public class Queen {
-    private Integer i;
-    private Integer j;
+    private int i;
+    private int j;
 
-    public Queen(Integer i, Integer j) {
+    public Queen(int i, int j) {
         this.i = i;
         this.j = j;
     }
 
-    public Queen(Integer i) {
+    public Queen(int i) {
         this.i = i;
     }
 
-    public Integer getI() {
+    public int getI() {
         return i;
     }
 
-    public void setI(Integer i) {
+    public void setI(int i) {
         this.i = i;
     }
 
-    public Integer getJ() {
+    public int getJ() {
         return j;
     }
 
-    public void setJ(Integer j) {
+    public void setJ(int j) {
         this.j = j;
     }
 }

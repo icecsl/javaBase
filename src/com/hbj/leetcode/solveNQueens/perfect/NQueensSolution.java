@@ -1,7 +1,9 @@
 package com.hbj.leetcode.solveNQueens.perfect;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Author: huangbingjing
@@ -12,51 +14,55 @@ public class NQueensSolution {
 
     public static List<List<String>> solveNQueens(int n) {
         List<List<String>> result = new ArrayList<>();
-        List<Queen> queens = new ArrayList<>(n);
+        List<Map<Integer, Integer>> queens = new ArrayList<>();
         begin(0,0, n, queens,result);
         System.out.println(result);
         return result;
     }
 
-    public static void begin(int row, int col, int n, List<Queen> queens,  List<List<String>> queenResult) {
+    public static void begin(int row, int col, int n, List<Map<Integer, Integer>> queens,  List<List<String>> queenResult) {
         begin:
         for (int i=row; i<n; i++) {
 
-            Queen queenI = new Queen(i);
+            Map<Integer, Integer> queenI = new HashMap<>();
+            queenI.put(0, i);
             lable:
             for (int j = 0; j < n; j++) {
 
                 if (i == row && j< col) {
                     continue;
                 }
-                for (Queen queen: queens) {
-                    if (i == queen.getI()) {
+                for (Map<Integer, Integer> queen: queens) {
+                    int qI = queen.get(0);
+                    int qJ = queen.get(1);
+
+                    if (i == qI) {
                         continue begin;
                     }
-                    if (j == queen.getJ()) {
+                    if (j == qJ) {
                         continue lable;
                     }
-                    if (Math.abs(i-queen.getI()) == Math.abs(j-queen.getJ())){
+                    if (Math.abs(i-qI) == Math.abs(j-qJ)){
                         continue lable;
                     }
                 }
-                List<Queen> newQueens = new ArrayList<>();
+                List<Map<Integer, Integer>> newQueens = new ArrayList<>();
                 newQueens.addAll(queens);
 
-                queenI.setJ(j);
+                queenI.put(1,j);
                 queens.add(queenI);
                 begin(i+1,0, n, queens, queenResult);
                 begin(i,j+1, n, newQueens, queenResult);
                 return;
             }
-            if (queenI.getJ() == null){
+            if (queenI.get(1) == null){
                 return;
             }
         }
 
         List<String> s = new ArrayList<>();
-        for (Queen queen :queens) {
-            s.add(getStrResult(n, queen.getJ()));
+        for (Map<Integer, Integer> queen :queens) {
+            s.add(getStrResult(n, queen.get(1)));
         }
         queenResult.add(s);
     }

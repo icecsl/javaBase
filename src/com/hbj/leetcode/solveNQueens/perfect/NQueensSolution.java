@@ -43,9 +43,7 @@ public class NQueensSolution {
                 Queen queenI = new Queen(i,j);
                 queens.add(queenI);
                 begin(i+1,0, n, queens, queenResult);
-                if (j!=n){
-                    begin(i,j+1, n, newQueens, queenResult);
-                }
+                begin(i,j+1, n, newQueens, queenResult);
                 return;
             }
             return;

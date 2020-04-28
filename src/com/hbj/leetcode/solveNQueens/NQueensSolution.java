@@ -29,6 +29,7 @@ public class NQueensSolution {
 
         head:
         for (int i=row; i<n; i++) {
+            int queensize = 0;
 
             StringBuilder s = new StringBuilder();
             lable:
@@ -36,6 +37,9 @@ public class NQueensSolution {
 
                 String item = array[i][j];
                 if (item != null) {
+                    if ("Q".equals(item)){
+                        queensize = 1;
+                    }
                     s.append(item);
                     continue;
                 }
@@ -62,6 +66,10 @@ public class NQueensSolution {
                 return;
 //                break head;
 
+            }
+
+            if (queensize != 1) {
+                return;
             }
             stringResult.add(s.toString());
         }

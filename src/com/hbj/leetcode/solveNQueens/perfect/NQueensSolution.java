@@ -25,23 +25,23 @@ public class NQueensSolution {
     }
 
     public static void begin(int row, int n, List<Queen> queens,  Map<Integer, String> resultMap, List<List<String>> queenResult) {
-        begin:
-        for (int i=row; i<n; i++) {
+
+        if (row < n ){
             lable:
             for (int j = 0; j < n; j++) {
                 for (Queen queen: queens) {
                     if (j == queen.getJ()) {
                         continue lable;
                     }
-                    if (Math.abs(i-queen.getI()) == Math.abs(j-queen.getJ())){
+                    if (Math.abs(row-queen.getI()) == Math.abs(j-queen.getJ())){
                         continue lable;
                     }
                 }
                 List<Queen> newQueens = new ArrayList<>();
                 newQueens.addAll(queens);
-                Queen queenI = new Queen(i,j);
+                Queen queenI = new Queen(row,j);
                 newQueens.add(queenI);
-                begin(i+1, n, newQueens, resultMap, queenResult);
+                begin(row+1, n, newQueens, resultMap, queenResult);
             }
             return;
         }
@@ -65,8 +65,6 @@ public class NQueensSolution {
         }
         return s.toString();
     }
-
-
 
 
     public static void main(String[] args) {

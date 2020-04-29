@@ -23,10 +23,6 @@ public class NQueensSolution {
         for (int i=row; i<n; i++) {
             lable:
             for (int j = 0; j < n; j++) {
-
-                if (i == row && j< col) {
-                    continue;
-                }
                 for (Queen queen: queens) {
                     if (i == queen.getI()) {
                         continue begin;
@@ -41,10 +37,8 @@ public class NQueensSolution {
                 List<Queen> newQueens = new ArrayList<>();
                 newQueens.addAll(queens);
                 Queen queenI = new Queen(i,j);
-                queens.add(queenI);
-                begin(i+1,0, n, queens, queenResult);
-                begin(i,j+1, n, newQueens, queenResult);
-                return;
+                newQueens.add(queenI);
+                begin(i+1,0, n, newQueens, queenResult);
             }
             return;
         }
@@ -54,6 +48,7 @@ public class NQueensSolution {
             s.add(getStrResult(n, queen.getJ()));
         }
         queenResult.add(s);
+
     }
 
     public static String getStrResult(int n, int j){

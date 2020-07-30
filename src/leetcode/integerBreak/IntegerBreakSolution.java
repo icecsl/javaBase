@@ -23,12 +23,7 @@ public class IntegerBreakSolution {
 
         int s = n%2;
         int half = s==0?n/2:n/2+1;
-        int max = 0;
-        for (int i = 2; i<= half; i++) {
-            int nextMax =  nextMax(i, n, half, 1);
-            max = max>nextMax? max : nextMax;
-        }
-        return max;
+        return nextMax(2, n, half, 1);
 
     }
 
@@ -45,10 +40,15 @@ public class IntegerBreakSolution {
         int max = 0;
         for (int i = init; i<= upLimit; i++) {
             int newLeft = left - i;
-            int nextMax =  nextMax(i, newLeft, upLimit, i);
+            upLimit = upLimit<newLeft?upLimit:newLeft;
+            if (newLeft < 0) {
+                continue;
+            }
+            int newSum = sum * i;
+            int nextMax =  nextMax(i, newLeft, upLimit, newSum);
             max = max>nextMax? max : nextMax;
         }
-        return max * sum;
+        return max;
     }
 
 

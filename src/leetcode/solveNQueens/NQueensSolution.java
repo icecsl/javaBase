@@ -1,4 +1,4 @@
-package com.hbj.leetcode.solveNQueens;
+package leetcode.solveNQueens;
 
 import java.util.ArrayList;
 import java.util.Arrays;

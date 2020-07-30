@@ -1,6 +1,4 @@
-package com.hbj.leetcode;
-
-import java.util.*;
+package leetcode.grid;
 
 /**
  * @Author: huangbingjing

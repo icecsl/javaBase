@@ -1,4 +1,4 @@
-package com.hbj.leetcode.solveNQueens.perfect;
+package leetcode.solveNQueens;
 
 /**
  * @Author: huangbingjing
@@ -11,10 +11,6 @@ public class Queen {
     public Queen(int i, int j) {
         this.i = i;
         this.j = j;
-    }
-
-    public Queen(int i) {
-        this.i = i;
     }
 
     public int getI() {

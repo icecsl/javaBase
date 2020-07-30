@@ -1,4 +1,4 @@
-package com.hbj.leetcode.solveNQueens.perfect;
+package leetcode.solveNQueens.perfect;
 
 import java.util.ArrayList;
 import java.util.HashMap;

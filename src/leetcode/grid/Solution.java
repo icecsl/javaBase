@@ -1,4 +1,4 @@
-package com.hbj.leetcode;
+package leetcode.grid;
 
 import java.util.HashMap;
 import java.util.Map;

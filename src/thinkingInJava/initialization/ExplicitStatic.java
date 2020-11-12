@@ -14,11 +14,13 @@ class Cup {
 class Cups {
 
   static {
+    System.out.println("Cups static()");
     cup1 = new Cup(1);
     cup2 = new Cup(2);
   }
-  static Cup cup1;
+
   static Cup cup2 =new Cup(6);//static 按顺序初始化。
+  static Cup cup1;
 
   Cups() {
     System.out.println("Cups()");

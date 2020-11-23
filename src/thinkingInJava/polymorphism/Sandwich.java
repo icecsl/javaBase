@@ -4,10 +4,12 @@ package thinkingInJava.polymorphism;
 class Meal {
   Meal() {
     System.out.println("Meal()"); }
-
-    static {
-      System.out.println("Meal() static field");
-    }
+  static {
+    System.out.println("Meal() static field");
+  }
+  {
+    System.out.println("Meal filed create");
+  }
 }
 
 class Bread {

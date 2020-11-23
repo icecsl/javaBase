@@ -1,5 +1,7 @@
 package com.hbj.variableparam;
 
+import java.math.BigDecimal;
+
 /**
  * @Description: 可变参数 object...
  * @author: huangbingjing
@@ -8,9 +10,8 @@ package com.hbj.variableparam;
 public class VariableParamTest {
 	public static void main(String[] args) {
 		//一个长度为0的数组
-		//Validator.validate();
-
-		//Validator.validate("A", 3, new BigDecimal("2389"));
+		Validator.validate("A", 3, new BigDecimal("2389"));
+		Validator.validate();
 		//参数本身是数组，就不转化了
 		Validator.validate(new Integer[]{22,4});
 		Validator.validate(new Integer[]{22,4}, "3");

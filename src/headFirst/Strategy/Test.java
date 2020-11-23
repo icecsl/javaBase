@@ -1,8 +1,6 @@
 package headFirst.Strategy;
 
 import headFirst.Strategy.impl.FlyNoWay;
-import headFirst.Strategy.impl.MallardDuck;
-import headFirst.Strategy.impl.RedheadDuck;
 
 /**
  * 策略模式

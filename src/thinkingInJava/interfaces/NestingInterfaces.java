@@ -2,6 +2,8 @@
 package thinkingInJava.interfaces;
 
 class A {
+
+  /* ------ B ---------*/
   interface B {
     void f();
   }
@@ -11,6 +13,8 @@ class A {
   private class BImp2 implements B {
     public void f() {}
   }
+
+  /* ------ C ---------*/
   public interface C {
     void f();
   }
@@ -20,6 +24,9 @@ class A {
   private class CImp2 implements C {
     public void f() {}
   }
+
+
+  /* ------ D ---------*/
   private interface D {
     void f();
   }
@@ -29,6 +36,8 @@ class A {
   public class DImp2 implements D {
     public void f() {}
   }
+
+
   public D getD() { return new DImp2(); }
   private D dRef;
   public void receiveD(D d) {

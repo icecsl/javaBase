@@ -1,4 +1,4 @@
-package thinkingInJava.base;
+package thinkingInJava.base_1;
 
 /**
  * Created by huangbingjing on 18/3/13.

@@ -1,4 +1,4 @@
-package thinkingInJava.base.mian;
+package thinkingInJava.base_1.mian;
 
 /**
  * @Description:

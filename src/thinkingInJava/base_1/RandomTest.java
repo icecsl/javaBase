@@ -1,4 +1,4 @@
-package thinkingInJava.base;
+package thinkingInJava.base_1;
 
 import java.util.Random;
 

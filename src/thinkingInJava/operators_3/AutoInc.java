@@ -1,5 +1,5 @@
-package thinkingInJava.operators;//: operators/AutoInc.java
-// Demonstrates the ++ and -- operators.
+package thinkingInJava.operators_3;//: operators_3/AutoInc.java
+// Demonstrates the ++ and -- operators_3.
 
 /**
  * i++、 ++i的测试
@@ -15,7 +15,9 @@ public class AutoInc {
     System.out.println("i-- : " + i--); // Post-decrement
     System.out.println("i : " + i);
   }
-} /* Output:
+}
+
+/* Output:
 i : 1
 ++i : 2
 i++ : 2

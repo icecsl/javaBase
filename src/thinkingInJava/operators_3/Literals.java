@@ -1,7 +1,12 @@
-package thinkingInJava.operators;//: operators/Literals.java
+package thinkingInJava.operators_3;//: operators_3/Literals.java
 
+/**
+ * 直接常量
+ */
 public class Literals {
   public static void main(String[] args) {
+
+    // 0x是十六进制。0是八进制
     int i1 = 0x2f; // Hexadecimal (lowercase)
     System.out.println("i1: " + Integer.toBinaryString(i1));
     int i2 = 0X2F; // Hexadecimal (uppercase)
@@ -14,6 +19,9 @@ public class Literals {
     System.out.println("b: " + Integer.toBinaryString(b));
     short s = 0x7fff; // max short hex value
     System.out.println("s: " + Integer.toBinaryString(s));
+
+
+    // L的是long，F的是float，D代表double
     long n1 = 200L; // long suffix
 //    long n2 = 200l; // long suffix (but can be confusing)
     long n3 = 200;
@@ -24,7 +32,9 @@ public class Literals {
     double d2 = 1D; // double suffix
     // (Hex and Octal also work with long)
   }
-} /* Output:
+}
+
+/* Output:
 i1: 101111
 i2: 101111
 i3: 1111111

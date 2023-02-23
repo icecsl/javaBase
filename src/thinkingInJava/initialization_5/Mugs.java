@@ -1,4 +1,4 @@
-package thinkingInJava.initialization;//: initialization/Mugs.java
+package thinkingInJava.initialization_5;//: initialization/Mugs.java
 // Java "Instance Initialization."
 class Mug {
   Mug(int marker) {

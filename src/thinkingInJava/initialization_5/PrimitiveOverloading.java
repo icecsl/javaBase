@@ -1,7 +1,10 @@
-package thinkingInJava.initialization;
+package thinkingInJava.initialization_5;
 
 import static sun.misc.Version.print;
 
+/**
+ * 基本类型重载
+ */
 public class PrimitiveOverloading {
   void f1(char x) { System.out.print("f1(char) "); }
   void f1(byte x) { System.out.print("f1(byte) "); }
@@ -102,7 +105,9 @@ public class PrimitiveOverloading {
 
     p.testDouble();
   }
-} /* Output:
+}
+
+/* Output:
 5: f1(int) f2(int) f3(int) f4(int) f5(long) f6(float) f7(double)
 char: f1(char) f2(int) f3(int) f4(int) f5(long) f6(float) f7(double)
 byte: f1(byte) f2(byte) f3(short) f4(int) f5(long) f6(float) f7(double)
